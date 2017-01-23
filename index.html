@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html ng-app="appModule">
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="format-detection" content="telephone=no"/>
+		<title>lesson</title>
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.5/css/bootstrap.min.css">
+		<link rel="stylesheet" href="css/style.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+		<script>
+			var app = angular.module('appModule',[]);
+			app.controller('dataSelection',function ($scope) {
+				
+			});
+		</script>
+	</head>
+	<body ng-controller="dataSelection">
+		<div id="wrapper">
+			<div class="center-wrapper">
+				<h1>Урок №5</h1>
+				<h2>Пользователь: User1. Количество курсов 5</h2>
+				<form class="panel" action="#">
+					<div class="input-group">
+						<input class="form-control" type="text">
+						<span class="input-group-btn">
+							<button class="btn btn-default">Добавить</button>
+						</span>
+					</div>
+					<table class="table table-hover">
+						<tr>
+							<th>Курс</th>
+							<th>Пройден</th>
+						</tr>
+						<tr>
+							<td>html, css</td>
+							<td>yes</td>
+						</tr>
+						<tr>
+							<td>javascript essential</td>
+							<td>yes</td>
+						</tr>
+						<tr>
+							<td>javascript advanced</td>
+							<td>yes</td>
+						</tr>
+						<tr>
+							<td>html5, css3</td>
+							<td>no</td>
+						</tr>
+						<tr>
+							<td>angularJS</td>
+							<td>no</td>
+						</tr>
+					</table>
+				</form>
+				1
+			</div>
+		</div>
+	</body>
+</html>
