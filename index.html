@@ -4,57 +4,47 @@
 		<meta charset="utf-8" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="format-detection" content="telephone=no"/>
-		<title>lesson</title>
+		<title>lesson1</title>
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.5/css/bootstrap.min.css">
 		<link rel="stylesheet" href="css/style.css">
 		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
 		<script>
 			var app = angular.module('appModule',[]);
-			app.controller('dataSelection',function ($scope) {
-				
-			});
+			app.controller('MainController',['$scope', function ($scope) {
+				$scope.table = {
+					name: ["Рис","Гречка","Конопля","Пшеница","Ячьмень"],
+					status: ["Есть","Нет","Есть","Нет","Есть"]
+				}
+				$scope.isActive = false;
+				$scope.toggleActive = function(){
+					$scope.isActive = !$scope.isActive;
+				}
+			}]);
 		</script>
 	</head>
-	<body ng-controller="dataSelection">
+	<body ng-controller="MainController">
 		<div id="wrapper">
 			<div class="center-wrapper">
-				<h1>Урок №5</h1>
-				<h2>Пользователь: User1. Количество курсов 5</h2>
+				<h1>Урок №1</h1>
+				<h2>Показать - Скрыть</h2>
 				<form class="panel" action="#">
+					<br/>
 					<div class="input-group">
-						<input class="form-control" type="text">
 						<span class="input-group-btn">
-							<button class="btn btn-default">Добавить</button>
+							<button ng-click="toggleActive()" class="btn btn-default">
+								<span ng-hide="isActive">Показать</span>
+								<span ng-show="isActive">Скрыть</span>
+							</button>
 						</span>
 					</div>
-					<table class="table table-hover">
-						<tr>
-							<th>Курс</th>
-							<th>Пройден</th>
-						</tr>
-						<tr>
-							<td>html, css</td>
-							<td>yes</td>
-						</tr>
-						<tr>
-							<td>javascript essential</td>
-							<td>yes</td>
-						</tr>
-						<tr>
-							<td>javascript advanced</td>
-							<td>yes</td>
-						</tr>
-						<tr>
-							<td>html5, css3</td>
-							<td>no</td>
-						</tr>
-						<tr>
-							<td>angularJS</td>
-							<td>no</td>
+					<br/>
+					<table class="table table-hover" ng-if="isActive">
+						<tr ng-repeat="i in table.name">
+							<th>{{$index+1}}. {{table.name[$index]}}</th>
+							<th>{{table.status[$index]}}</th>
 						</tr>
 					</table>
 				</form>
-				1
 			</div>
 		</div>
 	</body>
