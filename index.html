@@ -43,8 +43,8 @@
 					<br/>
 					<table class="table table-hover" ng-if="isActive">
 						<tr ng-repeat="i in table">
-							<th>{{$index+1}}. {{table[$index].name}}</th>
-							<th>{{table[$index].status}}</th>
+							<th>{{$index+1}}. {{i.name}}</th>
+							<th>{{i.status}}</th>
 						</tr>
 					</table>
 				</form>
