@@ -11,10 +11,13 @@
 		<script>
 			var app = angular.module('appModule',[]);
 			app.controller('MainController',['$scope', function ($scope) {
-				$scope.table = {
-					name: ["Рис","Гречка","Конопля","Пшеница","Ячьмень"],
-					status: ["Есть","Нет","Есть","Нет","Есть"]
-				}
+				$scope.table = [
+					{name: "Рис",status: "Есть"},
+					{name: "Гречка",status: "Нет"},
+					{name: "Конопля",status: "Есть"},
+					{name: "Пшеница",status: "Нет"},
+					{name: "Ячьмень",status: "Есть"}
+				]
 				$scope.isActive = false;
 				$scope.toggleActive = function(){
 					$scope.isActive = !$scope.isActive;
@@ -39,9 +42,9 @@
 					</div>
 					<br/>
 					<table class="table table-hover" ng-if="isActive">
-						<tr ng-repeat="i in table.name">
-							<th>{{$index+1}}. {{table.name[$index]}}</th>
-							<th>{{table.status[$index]}}</th>
+						<tr ng-repeat="i in table">
+							<th>{{$index+1}}. {{table[$index].name}}</th>
+							<th>{{table[$index].status}}</th>
 						</tr>
 					</table>
 				</form>
