@@ -8,22 +8,7 @@
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.5/css/bootstrap.min.css">
 		<link rel="stylesheet" href="css/style.css">
 		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
-		<script>
-			var app = angular.module('appModule',[]);
-			app.controller('MainController',['$scope', function ($scope) {
-				$scope.table = [
-					{name: "Рис",status: "Есть"},
-					{name: "Гречка",status: "Нет"},
-					{name: "Конопля",status: "Есть"},
-					{name: "Пшеница",status: "Нет"},
-					{name: "Ячьмень",status: "Есть"}
-				]
-				$scope.isActive = false;
-				$scope.toggleActive = function(){
-					$scope.isActive = !$scope.isActive;
-				}
-			}]);
-		</script>
+		<script src="js/app.js"></script>
 	</head>
 	<body ng-controller="MainController">
 		<div id="wrapper">
