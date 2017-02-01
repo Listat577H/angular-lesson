@@ -4,7 +4,7 @@
 		<meta charset="utf-8" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="format-detection" content="telephone=no"/>
-		<title>lesson1</title>
+		<title>lesson2</title>
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.5/css/bootstrap.min.css">
 		<link rel="stylesheet" href="css/style.css">
 		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
@@ -13,26 +13,40 @@
 	<body ng-controller="MainController">
 		<div id="wrapper">
 			<div class="center-wrapper">
-				<h1>Урок №1</h1>
-				<h2>Показать - Скрыть</h2>
+				<h1>Урок №2</h1>
+				<h2>Добавление строк</h2>
 				<form class="panel" action="#">
 					<br/>
 					<div class="input-group">
-						<span class="input-group-btn">
-							<button ng-click="toggleActive()" class="btn btn-default">
-								<span ng-hide="isActive">Показать</span>
-								<span ng-show="isActive">Скрыть</span>
-							</button>
-						</span>
+						<input type="text" class="form-control" placeholder="Добавить строку" ng-model="valRow">
+						<span class="input-group-btn"><button class="btn btn-success" ng-disabled="!valRow" ng-click="addRow(valRow)">Добавить</button></span>
 					</div>
 					<br/>
-					<table class="table table-hover" ng-if="isActive">
-						<tr ng-repeat="i in table">
-							<th>{{$index+1}}. {{i.name}}</th>
-							<th>{{i.status}}</th>
+					<table class="table table-hover" ng-if="arrRows.length > 0">
+						<tr>
+							<td>Название</td>
+							<td>Отметить все <input type="checkbox" ng-checked="isAllSelected" ng-click="successAll()">{{isAllSelected}}</td>
+							<td class="text-right"><button class="btn btn-danger" ng-click="removeAll()">Удалить Колонку</button></td>
+						</tr>
+						<tr ng-repeat="arrRow in arrRows | limitTo : limitRow : numPage track by $index">
+							<td ng-class="{'disable': arrRow.success}">{{arrRow.name}}</td>
+							<td><input type="checkbox" ng-model="arrRow.success" ng-change="changeSuccess()">{{arrRow.success}}</td>
+							<td class="text-right"><button class="btn btn-danger" ng-click="removeRow($index)">Удалить</button></td>
 						</tr>
 					</table>
 				</form>
+				<nav class="text-center" ng-if="arrRows.length>limitRow">
+				  <ul class="pagination">
+				  	<li class="page-item" ng-class="{ active : pagination == activePage }" ng-repeat="pagination in paginations track by $index">
+				  		<a class="page-link" href="javascript:;" ng-click="paginationEvent($index)">{{pagination+1}}</a>
+				  	</li>
+				    <!-- <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+				    <li class="page-item"><a class="page-link" href="#">1</a></li>
+				    <li class="page-item"><a class="page-link" href="#">2</a></li>
+				    <li class="page-item"><a class="page-link" href="#">3</a></li>
+				    <li class="page-item"><a class="page-link" href="#">Next</a></li> -->
+				  </ul>
+				</nav>
 			</div>
 		</div>
 	</body>
