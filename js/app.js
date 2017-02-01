@@ -20,6 +20,7 @@ var app = angular.module('appModule',[]);
         $scope.changeSuccess();
         $scope.numPage = 0;
         $scope.paginationEvent(0);
+        $scope.pagination();
         $scope.historyСhange();
       };
       $scope.removeRow = function(index){
@@ -35,7 +36,11 @@ var app = angular.module('appModule',[]);
       $scope.removeAll = function(){
         $scope.isAllSelected = $scope.arrSuccess;
         $scope.arrRows.splice($scope.numPage,$scope.limitRow);
-        $scope.numPage = $scope.numPage - $scope.limitRow;
+        if($scope.numPage<=0){
+          $scope.numPage = 0;
+        }else{
+          $scope.numPage = $scope.numPage - $scope.limitRow;
+        }
         $scope.changeSuccess();
         $scope.pagination();
         $scope.historyСhange();
